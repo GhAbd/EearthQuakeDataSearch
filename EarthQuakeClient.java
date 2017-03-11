@@ -59,17 +59,23 @@ public class EarthQuakeClient {
 
     public void closeToMe(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        String source = "data/nov20quakedatasmall.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size()+" quakes");
 
         // This location is Durham, NC
-        Location city = new Location(35.988, -78.907);
-
+        //Location city = new Location(35.988, -78.907);
         // This location is Bridgeport, CA
-        // Location city =  new Location(38.17, -118.82);
-
+        Location city =  new Location(38.17, -118.82);
+        
         // TODO
+        ArrayList<QuakeEntry> mylist =filterByDistanceFrom(list,1000000,city);
+        for(QuakeEntry qe : mylist){
+            System.out.println(city.distanceTo(qe.getLocation())+" "+qe.getInfo());
+            
+        }
+        System.out.println("Found "+mylist.size()+" quakes that match that criteria"); 
     }
 
     public void createCSV(){
