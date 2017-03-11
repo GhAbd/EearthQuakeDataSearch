@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=void\ createCSV()
 comment7.params=quakeData\ minDepth\ maxDepth
 comment7.target=java.util.ArrayList\ filterByDepth(java.util.ArrayList,\ double,\ double)
-numComments=8
+comment8.params=
+comment8.target=void\ quakeOfDepth()
+numComments=9

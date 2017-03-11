@@ -99,4 +99,17 @@ public class EarthQuakeClient {
         }
         return answer;
     }
+    
+    public void quakeOfDepth(){
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        
+        ArrayList<QuakeEntry> filtered = filterByDepth(list,-10000.0,-5000.0);
+        for (QuakeEntry eq : filtered){
+            System.out.println(eq);
+        }
+       System.out.println("Found "+filtered.size()+" quakes that match that criteria"); 
+    
+    }
 }
