@@ -112,4 +112,26 @@ public class EarthQuakeClient {
        System.out.println("Found "+filtered.size()+" quakes that match that criteria"); 
     
     }
+    
+    public ArrayList<QuakeEntry> filterByPhrase (ArrayList<QuakeEntry> quakeData, String searchPosition, String phrase ){
+        ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
+        for (QuakeEntry qe : quakeData){
+            
+            if(searchPosition == "start"){
+                 if(qe.getInfo().startsWith(phrase)){
+                     answer.add(qe);
+                 }
+            }else if(searchPosition == "end"){
+                 if(qe.getInfo().endsWith(phrase)){
+                     answer.add(qe);
+                 }
+            }else{
+                 if(qe.getInfo().indexOf(phrase)!=-1){
+                     answer.add(qe);
+                 }
+            }
+           
+        }
+        return answer;
+    }
 }
