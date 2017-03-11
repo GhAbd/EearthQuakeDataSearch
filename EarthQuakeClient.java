@@ -23,7 +23,11 @@ public class EarthQuakeClient {
     Location from) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         // TODO
-
+        for(QuakeEntry qe : quakeData ){
+            if (from.distanceTo(qe.getLocation())<distMax){
+                answer.add(qe);
+            }
+        }
         return answer;
     }
 
