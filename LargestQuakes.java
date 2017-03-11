@@ -16,6 +16,17 @@ public class LargestQuakes {
             System.out .println(qe);
         }
         System.out .println("read data for "+list.size());
-        
+        int largestIndex = indexOfLargest(list);        
+        System.out .println("Largest Magnitude index is "+ largestIndex +" "+ list.get(largestIndex));
+    }
+    
+    public int indexOfLargest (ArrayList<QuakeEntry> data){
+        int index = 0;
+        for (QuakeEntry qe :data){
+            if (qe.getMagnitude()>data.get(index).getMagnitude()){
+                index = data.indexOf(qe);
+            }
+        }
+        return index;
     }
 }
