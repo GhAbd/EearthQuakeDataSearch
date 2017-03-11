@@ -134,4 +134,17 @@ public class EarthQuakeClient {
         }
         return answer;
     }
+    
+    public void quakeByPhrase(){
+        EarthQuakeParser parser = new EarthQuakeParser();
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list = parser.read(source);
+        
+        ArrayList<QuakeEntry> filtered = filterByPhrase(list,"start","Explosion");
+        for (QuakeEntry eq : filtered){
+            System.out.println(eq);
+        }
+       System.out.println("Found "+filtered.size()+" quakes that match that criteria"); 
+    
+    }
 }
