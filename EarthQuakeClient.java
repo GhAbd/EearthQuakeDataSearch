@@ -90,4 +90,13 @@ public class EarthQuakeClient {
         }
     }
     
+    public ArrayList<QuakeEntry> filterByDepth (ArrayList<QuakeEntry> quakeData, double minDepth, double maxDepth ){
+        ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
+        for (QuakeEntry qe : quakeData){
+            if(qe.getDepth()<maxDepth && qe.getDepth()>minDepth){
+                answer.add(qe);
+            }
+        }
+        return answer;
+    }
 }
